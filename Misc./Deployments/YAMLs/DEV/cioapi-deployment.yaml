@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cioapi-deploy
+  namespace: aksmph-dev
+spec:
+  selector:
+    matchLabels:
+      app: cioapi-pod
+  replicas: 1
+  template:
+      metadata:
+        labels:
+          app: cioapi-pod
+      spec:
+        containers:
+        - name: cioapi-app
+          image: aksmphasisacr.azurecr.io/cioapi:v1.0.1
+          imagePullPolicy: Always          
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "512Mi"
+              cpu: "1"         
+          ports:
+          - containerPort: 80
+        imagePullSecrets:
+          - name: aks-poc-secret
+        nodeSelector:
+          agentpool: aksmphpool

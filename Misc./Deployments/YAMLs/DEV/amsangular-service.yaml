@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: amsangular-service
+  namespace: aksmph-dev
+spec:
+  selector:
+    app: amsangular-pod
+  ports:
+  - port: 80    
+  type: ClusterIP

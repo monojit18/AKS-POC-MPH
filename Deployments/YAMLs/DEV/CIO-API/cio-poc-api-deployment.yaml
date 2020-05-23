@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cio-poc-api-deploy
+  namespace: cio-poc-dev
+spec:
+  selector:
+    matchLabels:
+      app: cio-poc-api-pod
+  replicas: 1
+  template:
+      metadata:
+        labels:
+          app: cio-poc-api-pod
+      spec:
+        containers:
+        - name: cio-poc-api-app
+          image: ciopocacr.azurecr.io/unifiedaccess-api:v3.8.6
+          imagePullPolicy: IfNotPresent        
+          resources:
+            requests:
+              memory: "200Mi"
+              cpu: "200m"
+            limits:
+              memory: "400Mi"
+              cpu: "400m"         
+          ports:
+          - containerPort: 80
+        imagePullSecrets:
+          - name: cio-poc-dev-secret
+        nodeSelector:
+          agentpool: ciopocpool

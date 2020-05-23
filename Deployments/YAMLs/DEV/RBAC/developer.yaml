@@ -1,0 +1,25 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: cio-poc-developer-roles
+  namespace: cio-poc-dev
+rules:
+- apiGroups: [""]
+  resources: ["configmaps", "pods", "deployments"]
+  verbs: ["get", "list", "watch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cio-poc-developer-role-bindings
+  namespace: cio-poc-dev
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cio-poc-developer-roles
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  name: Jagath.M@mphasis.com
+  kind: User
+  namespace: cio-poc-dev

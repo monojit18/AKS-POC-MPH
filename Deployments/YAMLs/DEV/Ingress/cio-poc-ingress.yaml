@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: cio-poc-ingress
+  namespace: cio-poc-dev
+  annotations:    
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$1 
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/enable-cors: "true"    
+spec:  
+  rules:    
+  - http:
+      paths:
+      - path: /dev/api/?(.*)
+        backend:
+          serviceName: cio-poc-api-service
+          servicePort: 80
+      - path: /dev/ui/?(.*)
+        backend:
+          serviceName: cio-poc-ui-service
+          servicePort: 80

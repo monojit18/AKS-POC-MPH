@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amsapi-deploy
+  namespace: aksmph-dev
+spec:
+  selector:
+      matchLabels:
+        app: amsapi-pod
+  replicas: 1
+  template:
+      metadata:
+        labels:
+          app: amsapi-pod
+      spec:
+        containers:
+        - name: amsapi-app
+          image: aksmphasisacr.azurecr.io/ams-api:v1.0.0
+          imagePullPolicy: Always          
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          ports:
+          - containerPort: 80
+          env:
+            - name: SqlConnectionString
+              value: "Server=tcp:cio-apps-sql-server.database.windows.net,1433;Initial Catalog=inqmi_Dev;Persist Security Info=False;User ID=AppsDBAdmin;Password=Mphasis@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+        imagePullSecrets:
+          - name: aks-poc-secret
+        nodeSelector:
+          agentpool: aksinqmipool

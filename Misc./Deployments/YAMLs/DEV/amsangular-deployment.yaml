@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amsangular-deploy
+  namespace: aksmph-dev
+spec:
+  selector:
+      matchLabels:
+        app: amsangular-pod
+  replicas: 1
+  template:
+      metadata:
+        labels:
+          app: amsangular-pod
+      spec:
+        containers:
+        - name: amsangular-app
+          image: aksmphasisacr.azurecr.io/ams-angular:v1.0.0
+          imagePullPolicy: Always          
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          ports:
+          - containerPort: 80
+        imagePullSecrets:
+          - name: aks-poc-secret
+        nodeSelector:
+          agentpool: aksinqmipool

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cioapi-service
+  namespace: aksmph-dev
+spec:
+  selector:
+    app: cioapi-pod
+  ports:
+  - port: 80
+  type: ClusterIP

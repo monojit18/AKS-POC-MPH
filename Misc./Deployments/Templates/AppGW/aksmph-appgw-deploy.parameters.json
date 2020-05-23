@@ -1,0 +1,22 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",    
+    "parameters": {      
+      "certData": {
+          "reference": {
+              "keyVault": {                
+                  "id": "/subscriptions/76012eff-9c0f-4669-bf1b-c50d98038f68/resourceGroups/AKS-rg/providers/Microsoft.KeyVault/vaults/aks-mphasis-kv"
+                },
+            "secretName": "aks-mphasis-appgw-secret"
+        }
+      },
+      "certPassword": {
+          "reference": {
+              "keyVault": {
+                  "id": "/subscriptions/76012eff-9c0f-4669-bf1b-c50d98038f68/resourceGroups/AKS-rg/providers/Microsoft.KeyVault/vaults/aks-mphasis-kv"
+                },
+            "secretName": "aks-mphasis-appgw-password"
+        }
+      }	
+    }
+  }
