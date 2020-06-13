@@ -1,5 +1,5 @@
-param([Parameter(Mandatory=$false)] [string] $resourceGroup = "AKS-rg",
-        [Parameter(Mandatory=$false)] [string] $clusterName = "cio-poc-cluster",
+param([Parameter(Mandatory=$false)] [string] $resourceGroup = "cio-aks-dev-rg",
+        [Parameter(Mandatory=$false)] [string] $clusterName = "cio-aks-cluster",
         [Parameter(Mandatory=$false)] [string] $acrName = "ciopocacr",
         [Parameter(Mandatory=$false)] [string] $keyVaultName = "cio-poc-kv",
         [Parameter(Mandatory=$false)] [string] $aksVNetName = "cio-poc-vnet",

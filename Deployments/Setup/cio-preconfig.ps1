@@ -1,6 +1,6 @@
-param([Parameter(Mandatory=$false)] [string] $resourceGroup = "AKS-rg",
-        [Parameter(Mandatory=$false)] [string] $vnetResourceGroup = "infraservices-nextgen-rg",
-        [Parameter(Mandatory=$false)] [string] $clusterName = "cio-poc-cluster",
+param([Parameter(Mandatory=$false)] [string] $resourceGroup = "cio-aks-dev-rg",
+        [Parameter(Mandatory=$false)] [string] $vnetResourceGroup = "cio-aks-infra-dev-rg",
+        [Parameter(Mandatory=$false)] [string] $clusterName = "cio-aks-cluster",
         [Parameter(Mandatory=$false)] [string] $primaryOwnerKey = "primary_owner",
         [Parameter(Mandatory=$false)] [string] $primaryOwnerValue = "Jagath.M@mphasis.com",
         [Parameter(Mandatory=$false)] [string] $secondaryOwnerKey = "secondary_owner",
@@ -10,14 +10,14 @@ param([Parameter(Mandatory=$false)] [string] $resourceGroup = "AKS-rg",
         [Parameter(Mandatory=$false)] [string] $projectNameKey = "project_name",
         [Parameter(Mandatory=$false)] [string] $projectNameValue = "CIO_Cloud_CSP",
         [Parameter(Mandatory=$false)] [string] $location = "southindia",
-        [Parameter(Mandatory=$false)] [string] $userEmail = "cloud.test@mphasis.com",
-        [Parameter(Mandatory=$false)] [string] $acrName = "ciopocacr",
-        [Parameter(Mandatory=$false)] [string] $keyVaultName = "cio-poc-kv",
-        [Parameter(Mandatory=$false)] [string] $aksVNetName = "nextgenlabs-vnet",
-        [Parameter(Mandatory=$false)] [string] $acrTemplateFileName = "cio-poc-acr-deploy",
-        [Parameter(Mandatory=$false)] [string] $keyVaultTemplateFileName = "cio-poc-keyvault-deploy",
-        [Parameter(Mandatory=$false)] [string] $subscriptionId = "76012eff-9c0f-4669-bf1b-c50d98038f68",
-        [Parameter(Mandatory=$false)] [string] $baseFolderPath = "/Users/monojitdattams/Development/Projects/Workshops/Mphasis_Workshop/AKS-POC/Deployments")
+        [Parameter(Mandatory=$false)] [string] $userEmail = "prakash.rawat@mphasis.com",
+        [Parameter(Mandatory=$false)] [string] $acrName = "acrdev",
+        [Parameter(Mandatory=$false)] [string] $keyVaultName = "keyvault-dev",
+        [Parameter(Mandatory=$false)] [string] $aksVNetName = "aks-dev-vnet",
+        [Parameter(Mandatory=$false)] [string] $acrTemplateFileName = "cio-acr-deploy",
+        [Parameter(Mandatory=$false)] [string] $keyVaultTemplateFileName = "cio-keyvault-deploy",
+        [Parameter(Mandatory=$false)] [string] $subscriptionId = "359f292b-8fe1-45ba-8b0f-e1295e7eb9ef",
+        [Parameter(Mandatory=$false)] [string] $baseFolderPath = "<Praksh_to_Fillup>")
 
 $projectName = "cio-poc"
 $vnetRole = "Network Contributor"
